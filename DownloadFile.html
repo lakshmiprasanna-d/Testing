@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Auto Download File</title>
+  <script>
+    window.onload = function() {
+      // Create a blob with the file content
+      const text = "this is a test file";
+      const blob = new Blob([text], { type: "text/plain" });
+
+      // Create a temporary link element
+      const link = document.createElement("a");
+      link.href = URL.createObjectURL(blob);
+      link.download = "text.txt";
+
+      // Trigger the download
+      link.click();
+
+      // Clean up
+      URL.revokeObjectURL(link.href);
+    };
+  </script>
+</head>
+<body>
+  <p>The file will download automatically when you open this page.</p>
+</body>
+</html>
